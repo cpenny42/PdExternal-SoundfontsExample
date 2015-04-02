@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FAC8CC0C1ACCE83D005D119E"
-               BuildableName = "soundfonts~.pd_darwin"
+               BuildableName = "soundfonts.pd_darwin"
                BlueprintName = "soundfonts"
                ReferencedContainer = "container:soundfonts.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAC8CC0C1ACCE83D005D119E"
-            BuildableName = "soundfonts~.pd_darwin"
+            BuildableName = "soundfonts.pd_darwin"
             BlueprintName = "soundfonts"
             ReferencedContainer = "container:soundfonts.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAC8CC0C1ACCE83D005D119E"
-            BuildableName = "soundfonts~.pd_darwin"
+            BuildableName = "soundfonts.pd_darwin"
             BlueprintName = "soundfonts"
             ReferencedContainer = "container:soundfonts.xcodeproj">
          </BuildableReference>

@@ -8,6 +8,7 @@
 
 #include "m_pd.h"
 #include "fluidsynth.h"
+#include <string.h>
 
 static t_class *soundfonts_class;
 
@@ -32,7 +33,6 @@ void *soundfonts_new(void)
 
     instance->settings = new_fluid_settings();
     instance->synth = new_fluid_synth(instance->settings);
-    instance->sfont_id = fluid_synth_sfload(instance->synth, "/Users/ChrisPenny/Desktop/Comp150/Pd-for-LibPd/soundfonts/piano_1.sf2", 1);
     
     // Spawn outlets
     instance->x_outL = outlet_new(&instance->x_obj, &s_signal);
@@ -57,9 +57,7 @@ t_int *soundfonts_perform(t_int *input)
     t_sample *outR = (t_sample *)(input[3]);
     int n = (int)(input[4]);
     
-    for(int i = 0; i < n; i++) {
-        fluid_synth_write_float(instance->synth, n, outL, 0, 1, outR, 0, 1);
-    }
+    fluid_synth_write_float(instance->synth, n, outL, 0, 1, outR, 0, 1);
     
     return input + 5;
 }
@@ -70,14 +68,31 @@ void soundfonts_dsp(t_soundfonts *instance, t_signal **sp)
             sp[0]->s_vec, sp[1]->s_vec, sp[0]->s_n);
 }
 
-void soundfonts_play(t_soundfonts *instance)
+void soundfonts_set(t_soundfonts *instance, t_symbol *soundfont)
 {
-    fluid_synth_noteon(instance->synth, 0, 60, 127);
+    if ((instance != NULL) && (instance->synth != NULL)) {
+        post("setting to: %s", soundfont->s_name);
+        instance->sfont_id = fluid_synth_sfload(instance->synth, soundfont->s_name, 1);
+    } else {
+        post("Unable to set soundfont due to error.");
+    }
 }
 
-void soundfonts_stop(t_soundfonts *instance)
+void soundfonts_note(t_soundfonts *instance, t_symbol *s, int argc, t_atom *argv)
 {
-    fluid_synth_noteoff(instance->synth, 0, 60);
+    if ((argc < 2) || (instance->synth == NULL)) {
+        post("error: need 2 values to play note (note, velocity pair).");
+        return;
+    }
+    else {
+        float note = atom_getfloatarg(0, argc, argv);
+        float velocity = atom_getfloatarg(1, argc, argv);
+        float channel = atom_getfloatarg(2, argc, argv);
+        
+        fluid_synth_noteon(instance->synth, channel, note, velocity);
+        
+        post("playing note: %f %f %f", note, velocity, channel);
+    }
 }
 
 void soundfonts_setup(void)
@@ -90,7 +105,7 @@ void soundfonts_setup(void)
                                        0);
     
     class_addmethod(soundfonts_class, (t_method)soundfonts_dsp, gensym("dsp"), 0);
-    class_addmethod(soundfonts_class, (t_method)soundfonts_play, gensym("play"), 0);
-    class_addmethod(soundfonts_class, (t_method)soundfonts_stop, gensym("stop"), 0);
+    class_addmethod(soundfonts_class, (t_method)soundfonts_set, gensym("set"), A_DEFSYMBOL, 0);
+    class_addlist(soundfonts_class, soundfonts_note);
 }
 

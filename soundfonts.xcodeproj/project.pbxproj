@@ -6,8 +6,15 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FA32A5CB1ACCE9E500FEC475 /* soundfonts.c in Sources */ = {isa = PBXBuildFile; fileRef = FA32A5CA1ACCE9E500FEC475 /* soundfonts.c */; };
+		FAC8CC171ACCE87E005D119E /* m_pd.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC8CC151ACCE87E005D119E /* m_pd.h */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		FAC8CC0D1ACCE83D005D119E /* libsoundfonts_tilde.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsoundfonts_tilde.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA32A5CA1ACCE9E500FEC475 /* soundfonts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = soundfonts.c; sourceTree = "<group>"; };
+		FAC8CC0D1ACCE83D005D119E /* soundfonts.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = soundfonts.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC8CC151ACCE87E005D119E /* m_pd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_pd.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -24,6 +31,8 @@
 		FAC8CC041ACCE83D005D119E = {
 			isa = PBXGroup;
 			children = (
+				FA32A5CA1ACCE9E500FEC475 /* soundfonts.c */,
+				FAC8CC151ACCE87E005D119E /* m_pd.h */,
 				FAC8CC0E1ACCE83D005D119E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -31,7 +40,7 @@
 		FAC8CC0E1ACCE83D005D119E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAC8CC0D1ACCE83D005D119E /* libsoundfonts_tilde.dylib */,
+				FAC8CC0D1ACCE83D005D119E /* soundfonts.pd_darwin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -43,15 +52,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC8CC171ACCE87E005D119E /* m_pd.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		FAC8CC0C1ACCE83D005D119E /* soundfonts_tilde */ = {
+		FAC8CC0C1ACCE83D005D119E /* soundfonts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAC8CC111ACCE83D005D119E /* Build configuration list for PBXNativeTarget "soundfonts_tilde" */;
+			buildConfigurationList = FAC8CC111ACCE83D005D119E /* Build configuration list for PBXNativeTarget "soundfonts" */;
 			buildPhases = (
 				FAC8CC091ACCE83D005D119E /* Sources */,
 				FAC8CC0A1ACCE83D005D119E /* Frameworks */,
@@ -61,9 +71,9 @@
 			);
 			dependencies = (
 			);
-			name = soundfonts_tilde;
+			name = soundfonts;
 			productName = soundfonts_tilde;
-			productReference = FAC8CC0D1ACCE83D005D119E /* libsoundfonts_tilde.dylib */;
+			productReference = FAC8CC0D1ACCE83D005D119E /* soundfonts.pd_darwin */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -80,7 +90,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FAC8CC081ACCE83D005D119E /* Build configuration list for PBXProject "soundfonts_tilde" */;
+			buildConfigurationList = FAC8CC081ACCE83D005D119E /* Build configuration list for PBXProject "soundfonts" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -92,7 +102,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FAC8CC0C1ACCE83D005D119E /* soundfonts_tilde */,
+				FAC8CC0C1ACCE83D005D119E /* soundfonts */,
 			);
 		};
 /* End PBXProject section */
@@ -102,6 +112,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA32A5CB1ACCE9E500FEC475 /* soundfonts.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,27 +196,41 @@
 		FAC8CC121ACCE83D005D119E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				EXECUTABLE_EXTENSION = pd_darwin;
+				EXECUTABLE_PREFIX = "";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = soundfonts;
+				VALID_ARCHS = "i386 x86_64 ppc";
 			};
 			name = Debug;
 		};
 		FAC8CC131ACCE83D005D119E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				EXECUTABLE_EXTENSION = pd_darwin;
+				EXECUTABLE_PREFIX = "";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				PRODUCT_NAME = soundfonts;
+				VALID_ARCHS = "i386 x86_64 ppc";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FAC8CC081ACCE83D005D119E /* Build configuration list for PBXProject "soundfonts_tilde" */ = {
+		FAC8CC081ACCE83D005D119E /* Build configuration list for PBXProject "soundfonts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAC8CC0F1ACCE83D005D119E /* Debug */,
@@ -214,13 +239,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAC8CC111ACCE83D005D119E /* Build configuration list for PBXNativeTarget "soundfonts_tilde" */ = {
+		FAC8CC111ACCE83D005D119E /* Build configuration list for PBXNativeTarget "soundfonts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAC8CC121ACCE83D005D119E /* Debug */,
 				FAC8CC131ACCE83D005D119E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

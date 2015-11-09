@@ -116,6 +116,7 @@
 		FA32A8F11ACCF43A00FEC475 /* gmirroringtable.h in Headers */ = {isa = PBXBuildFile; fileRef = FA32A8F01ACCF43A00FEC475 /* gmirroringtable.h */; };
 		FA32A8F31ACCF47B00FEC475 /* gscripttable.h in Headers */ = {isa = PBXBuildFile; fileRef = FA32A8F21ACCF47B00FEC475 /* gscripttable.h */; };
 		FAC8CC171ACCE87E005D119E /* m_pd.h in Headers */ = {isa = PBXBuildFile; fileRef = FAC8CC151ACCE87E005D119E /* m_pd.h */; };
+		FAE495421ACDC1D100023A31 /* gconstructor.h in Headers */ = {isa = PBXBuildFile; fileRef = FAE495411ACDC1D100023A31 /* gconstructor.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -351,6 +352,7 @@
 		FA32A8F21ACCF47B00FEC475 /* gscripttable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gscripttable.h; sourceTree = "<group>"; };
 		FAC8CC0D1ACCE83D005D119E /* soundfonts.pd_darwin */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = soundfonts.pd_darwin; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC8CC151ACCE87E005D119E /* m_pd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_pd.h; sourceTree = "<group>"; };
+		FAE495411ACDC1D100023A31 /* gconstructor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gconstructor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -550,6 +552,7 @@
 				FA32A8131ACCF21300FEC475 /* gbytes.h */,
 				FA32A8141ACCF21300FEC475 /* gcharset.h */,
 				FA32A8151ACCF21300FEC475 /* gcharsetprivate.h */,
+				FAE495411ACDC1D100023A31 /* gconstructor.h */,
 				FA32A8161ACCF21300FEC475 /* gconvert.h */,
 				FA32A8171ACCF21300FEC475 /* gdir.h */,
 				FA32A8181ACCF21300FEC475 /* genviron.h */,
@@ -684,8 +687,8 @@
 			isa = PBXGroup;
 			children = (
 				FA32A7991ACCF21300FEC475 /* fluidsynth */,
-				FA32A5CA1ACCE9E500FEC475 /* soundfonts.c */,
 				FAC8CC151ACCE87E005D119E /* m_pd.h */,
+				FA32A5CA1ACCE9E500FEC475 /* soundfonts.c */,
 				FAC8CC0E1ACCE83D005D119E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC8CC171ACCE87E005D119E /* m_pd.h in Headers */,
+				FAE495421ACDC1D100023A31 /* gconstructor.h in Headers */,
 				FA32A8EF1ACCF41200FEC475 /* gunichartables.h in Headers */,
 				FA32A8E71ACCF2DD00FEC475 /* gasyncqueueprivate.h in Headers */,
 				FA32A8E91ACCF35100FEC475 /* gtrashstack.h in Headers */,
